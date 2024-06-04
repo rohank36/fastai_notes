@@ -1,0 +1,26 @@
+FastAI Lecture 7: Recommender Systems
+
+- More parameters => more memory used up on your gpu while training 
+- Gradient Accumulation: 
+	- a way of efficiently using the gpu by training on smaller batch sizes until the total count is > the target batch size
+		then substraacting the gradient*lr
+	- allows us to train larger models on less powerful gpus 
+	- pick batch size that is a multiple of 8 (jeremy's rule of thumb)
+
+- Multi Target model: 
+- Cross Entropy Loss: tells how close the models preds are to actual pred and if model confidently making correct preds
+	- You're always going have to care about what happens in the 1st and last layer of a NN
+	- First thing you have to do is calculate the Softmax or Log Softmax
+	- Softmax to CrossEntropy
+		- Creating a probability distribution for each potential cateogry. Sum of all probs = 1
+		- One hot encoding the probability distribution => this gives us the "actuals" column
+		- For each category sum the actual * log of the p(actual) 
+			- the p(actual) is just the probability distribution value 
+			- only need to take log if you didn't use Log Softmax
+
+	-Binary Cross Entropy: use when you are predicting if something is or is not (e.g is it a cat or not?)
+		- 
+
+	
+
+
