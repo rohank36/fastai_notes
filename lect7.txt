@@ -1,4 +1,4 @@
-FastAI Lecture 7: Recommender Systems
+FastAI Lecture 7: Collab Filtering
 
 - More parameters => more memory used up on your gpu while training 
 - Gradient Accumulation: 
@@ -19,7 +19,25 @@ FastAI Lecture 7: Recommender Systems
 			- only need to take log if you didn't use Log Softmax
 
 	-Binary Cross Entropy: use when you are predicting if something is or is not (e.g is it a cat or not?)
-		- 
+		- Considers P(x) and 1-P(x) and takes P(x)*log(P(x)) and P(x)*log(1-P(x)) - refer to actual equation
+
+Collaborative Filtering
+- Latent Factors: we don't know what factors matter, but there is probably something that does matter. Lets try using SGD to find them
+	- init x random factors for each user and each target (e.g. movies)
+	- maxtrix multiply to get the prediction
+	- calculate loss on preds vs actual (e.g. pred movie rating vs actual movie rating)
+	- SGD => optimized weights
+	- Preds that come close to the actual but now we have learned factors (weights)
+	- Choosing number of factors: fastai has defaults, obscure art. Based on Jeremy's own intution.
+	- Have to add the bias (1 for the movie embedding and one for the user embedding) to the sum of the mm between the user and movie embeddings
+- Embedding: like looking up something in an array (computational shortcut, like vector @ one-hot encoded vector, but instead you're just looking up 
+	the pos in an array. They do the same thing)
+- Note: if the loss gets better then gets worse, it may be an indication of overfitting
+	- 1 way to combat overfitting is weight decay aka L2 Regularization 
+	- For tab and collab data sets, hard to determine which wd to use. So start with wd=0.1 then divide by 10 a couple of times. See what gives best result.
+- Note: Bias is needed in a NN because if the input to the layer is 0, then that 0 will be carried on throughout the neural network, messing up the predictions. 
+	Bias will shift away from this 0 so that the NN can continue to learn.
+
 
 	
 
