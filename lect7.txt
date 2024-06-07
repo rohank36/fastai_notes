@@ -51,6 +51,7 @@ Embeddings
 	- Embeddings can also be created from tabular data to learn latent factors.
 
 - We can use embeddings to learn latent factors between different things. Pretty cool ngl.
+- Embeddings can be used as an input to a NN
 	
 
 

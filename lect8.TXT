@@ -1,1 +1,35 @@
-FastAI Lecture 8: Convolutions
+FastAI Lecture 8: Convolutions 
+
+Convolutions: something that can be used in the middle of a NN (between the input and output layers)
+- Think of it like a: mini sliding window of dot products of nxn matrices. In convolutions these matrices are called kernels. 
+- Stride 2 convolution: same sliding window idea, but everytime you slide you skip 1 (for both rows and cols) 
+- Pooling:
+	- technique where you take a nxn window of the grid and you max,avg or concat max avg pool of the values. Basically what it does is if you are looking for a bear, it will take that
+	nxn window and ask: is there a bear in this? Depending on your data you'll choose max,avg or a mix of both. E.g. if the imgs have a lot going on and a bear in a small part of it - you
+	may want to do max pooling. 
+Thoughts: Convolutions are just matrix products that help capture more features of an image from the the features that were captured in the previous layer
+
+Dropout
+- There is a matrix that acts as a filter (0 or 1s) and it corrupts the image that was passed through the filter, lets call this image x.
+- Image x is then used as the input to the next layer 
+- Why would we want to delete some parts of the image b4 passing to next layer? B/c then the model is forced to then learn the underlying reprsentation of the image instead of overfitting
+- More dropout = less good on trg data = able to generalize more to unseen data 
+- Dropout can also be used in NNs by randomly deleting some nodes(activations) in a layer. Different activations are deleted per batch
+
+
+Jeremy AMA:
+How to stay motivated? 
+A: you don't have to know everything. Pick an interest in some sub area and follow that. If that is too much pick a sub sub area. Things may seem like they are moving fast b/c of new press releases
+but things aren't actually moving that fast. 
+
+Field getting towards big models and big data and big compute. Will I be able to train anything worth while in the future without all this?
+A: Engineers always want to try things on big computers. Not true that you need to always do things on big computers, there are smart ways you can find to do things on small computers. 
+
+How do you turn a model into a business? 
+A: Key thing is to solve a legit problem that people need solved and which they will pay you to solve. Start with "heres a problem I want to solve". Pick a problem that you understand better
+than most people. A prob you face day 2 day, a prob you face at work, a prob you face in ur hobby. 
+
+Jeremy's productivity hacks? 
+A: Not to work too much. But when hes work HES WORKING. Spends about half his working day learning or practicing something new (since he was 18) - new language, new algo, something he read about. 
+Try not to overdo things. Get good sleep, eat well, exercise well. Tenacity - a lot of ppl give up much earlier than he does. Just keep going until something is acctually finished well and nicely.
+
